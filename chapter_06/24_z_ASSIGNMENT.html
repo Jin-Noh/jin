@@ -2,29 +2,29 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>D3: A simple scatterplot with value labels</title>
+		<title>Jin / D3: A simple scatterplot with value labels</title>
 		<script type="text/javascript" src="../d3.js"></script>
 		<style type="text/css">
-			/* No style rules here yet */		
+			/* No style rules here yet */
 		</style>
 	</head>
 	<body>
 		<script type="text/javascript">
-            
+
             //ASSIGNMENT: choose to do 1 of 2 things:
             //1. apply a color scale similar to the bar graph in the previous example to the circles based on their radius
-            //2. apply 2 different colors to circles depending on wether their radius is above or below a threshold - you decide threshold and colors. 
+            //2. apply 2 different colors to circles depending on wether their radius is above or below a threshold - you decide threshold and colors.
 
 			//Width and height
-			var w = 500;
+			var w = 700;
 			var h = 100;
-			
+
 			var dataset = [
 							[5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
 							[410, 12], [475, 44], [25, 67], [85, 21], [220, 88]
 						  ];
-	
-			//Create SVG element
+
+			//Create SVG element+
 			var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
@@ -44,8 +44,11 @@
 			   		return Math.sqrt(h - d[1]);
 			   })
                .attr("fill",function(d){
-                   return "blue"//NOTE: ADD YOUR CODE HERE TO FULFILL ONE OF THE 2 ASSIGNMENT CHOICES
-               });
+
+                   return "rgba(0,"+(255-(d[1]/h)*255)+",0,0.5)";//NOTE: ADD YOUR CODE HERE TO FULFILL ONE OF THE 2 ASSIGNMENT CHOICES
+               })
+							 .attr("stroke", "rgba(0,0,0,0.5)")
+							 .attr("stroke-width","0.5");
 
 			svg.selectAll("text")
 			   .data(dataset)
@@ -62,8 +65,8 @@
 			   })
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
-			   .attr("fill", "red");
-			
+			   .attr("fill", "black");
+
 		</script>
 	</body>
 </html>
