@@ -47,7 +47,10 @@
 			   })
 			   .attr("fill", function(d) {
 					return "rgba(0, " + Math.round(d * 10) + ",0,0.5)";
-			   });
+				})
+				 .attr("stroke","rgba(0,0,0,1)")
+				 .attr("stroke-width", "0.25");
+
 
 
              // NOTE: you will need to repeat the same steps for the text labels
@@ -67,7 +70,7 @@
 			   })
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
-			   .attr("fill", "black");
+			   .attr("fill", "black")
 
 
 
