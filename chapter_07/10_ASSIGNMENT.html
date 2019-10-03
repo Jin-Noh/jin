@@ -128,17 +128,18 @@
                        //TODO: return the approperiate label value
  				   })
  				   .attr("x", function(d) {
-						 return xScale(d.Hour) - rScale(d.Count)-5;
+						 return xScale(d.Hour) ;
 
                        //TODO: return the approperiate x value
  				   })
  				   .attr("y", function(d) {
-						 return yScale(d.Count) - rScale(d.Count) - 5;
+						 return yScale(d.Count) - rScale(d.Count) -5 ;
                        //TODO: return the approperiate y value
  				   })
  				   .attr("font-family", "sans-serif")
  				   .attr("font-size", "11px")
- 				   .attr("fill", "#bbb");
+ 				   .attr("fill", "#bbb")
+					 .attr("text-anchor","middle");
 
 
                    //TODO: you may see that now the new radius overlaps the labels and are hard to see. adjust it in 1 of 2 ways
