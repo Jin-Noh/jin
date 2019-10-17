@@ -5,18 +5,29 @@
 		<title>D3: Sorting visual elements</title>
 		<script type="text/javascript" src="../d3.js"></script>
 		<style type="text/css">
-			/* No style rules here yet */		
+
+		/*rect{
+				-moz-transition:all 0.25s;
+				-o-transition: all 0.25s;
+				-webkit-transition : all 0.25s;
+				transition : all 0.25s;
+			}*/
+
+			rect:hover {
+				fill: orange;
+			}
+
 		</style>
 	</head>
 	<body>
 		<script type="text/javascript">
-            
+
             //ASSIGNMENT: once again, move the number labels to the right rectangles
 
 			//Width and height
 			var w = 600;
 			var h = 250;
-			
+
 			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
 							11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
 
@@ -28,7 +39,7 @@
 			var yScale = d3.scaleLinear()
 							.domain([0, d3.max(dataset)])
 							.range([0, h]);
-			
+
 			//Create SVG element
 			var svg = d3.select("body")
 						.append("svg")
@@ -53,19 +64,10 @@
 			   .attr("fill", function(d) {
 					return "rgb(0, 0, " + Math.round(d * 10) + ")";
 			   })
-			   .on("mouseover", function() {
-			   		d3.select(this)
-			   			.attr("fill", "orange");
-			   })
-			   .on("mouseout", function(d) {
-				   d3.select(this)
-				   		.transition()
-				   		.duration(250)
-						.attr("fill", "rgb(0, 0, " + (d * 10) + ")");
-			   })
 			   .on("click", function() {
-			   		sortBars();
-			   });
+			   		sortBars()
+					});
+
 
 			//Create labels
 			svg.selectAll("text")
@@ -85,7 +87,8 @@
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
-			
+
+
 			//Define sort function
 			var sortBars = function() {
 
@@ -94,17 +97,29 @@
 					   return d3.ascending(a, b);
 				   	})
 				   .transition()
-				   .duration(1000)
+					 .delay(10)
+				   .duration(2500)
 				   .attr("x", function(d, i) {
 				   		return xScale(i);
-				   });
-                   
+						});
+
+				svg.selectAll("text")
+								   .sort(function(a,b){
+						 return d3.ascending(a,b);
+					 })
+					 .transition()
+					 .delay(10)
+					 .duration(2500)
+					 .attr("x", function(d,i){
+						return xScale(i) + 15;
+					 })	};
+
                    //TODO: move the labels accordingly within the sortBars function here
                    //start by selecting all text
-                   
 
-			};			
-			
+
+
+
 		</script>
 	</body>
 </html>
