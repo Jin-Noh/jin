@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="d3.js"></script>
+    <script src="radarChart.js"></script>
+<style>
+body, html {
+  height: 100%;
+}
+.parallax {
+  /* The image used */
+  background: linear-gradient(0deg, rgba(255,123,75,0.6979166666666667) 0%, rgba(96,209,255,0.6362920168067228) 100%);
+  /* Full height */
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:25vh;
+  padding-top:100vh;
+}
+.parallax2 {
+  /* The image used */
+  background-image: url('speakers.jpg');
+  /* Full height */
+  height: 25vh;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top:60vh;
+}
+.parallax3 {
+  /* The image used */
+  background-image: url('optimistic.jpg');
+  /* Full height */
+  height: 60vh;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top:40vh;
+}
+.parallax4 {
+  /* The image used */
+  background: linear-gradient(0deg, rgba(255,123,75,0.6979166666666667) 0%, rgba(96,209,255,0.6362920168067228) 100%);
+  /* Full height */
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:70vh;
+  padding-top:0vh;
+}
+.parallax5 {
+  /* The image used */
+  background: linear-gradient(0deg, rgba(255,123,75,0.6979166666666667) 0%, rgba(96,209,255,0.6362920168067228) 100%);
+  /* Full height */
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:70vh;
+  padding-top:0vh;
+}
+
+
+
+body{
+
+}
+.survey{
+  font-family:'cursive' }
+.legend {
+  font-family: 'Raleway', sans-serif;
+  fill: #333333;
+}
+
+.tooltip {
+  fill: #333333;
+}
+.slidecontainer {
+  width: 100%;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 40vw;
+  height: 5px;
+  background: rgba(0,0,0,0.7);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+.slider:hover {
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 20px;
+  background: black;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: black;
+  cursor: pointer;
+}
+#announcement{
+
+}
+#survey1_submit{
+    border-radius:7px;
+    width:80px;
+    text-align:center;
+    border:1px solid grey;
+    cursor:pointer;
+}
+#survey1_submit:hover{
+    border-radius:7px;
+    width:80px;
+    text-align:center;
+    border:1px solid red;
+    cursor:pointer;
+}
+#survey2_submit{
+    border-radius:5px;
+    width:80px;
+    text-align:center;
+    border:1px solid black;
+    cursor:pointer;
+}
+#survey2_submit:hover{
+    border-radius:5px;
+    width:80px;
+    text-align:center;
+    border:1px solid red;
+    cursor:pointer;
+}
+#result{
+    border-radius:5px;
+    width:180px;
+    text-align:center;
+    border:1px solid black;
+    cursor:pointer;
+}
+#result:hover{
+    border-radius:5px;
+    width:180px;
+    text-align:center;
+    border:1px solid red;
+    cursor:pointer;
+}
+
+
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<div style="text-align:center; font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+letter-spacing: 2.2px;
+word-spacing: 4px;
+color: rgba(0,0,0,0.35);
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+text-transform: none;position:absolute;margin-left: 5vw;margin-top:47vh;">
+  <h1>Predict your future life with automation!</h1>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <p style="letter-spacing:1px;text-align:left;font-size:13px; color:rgba(0,0,0,0.35)">  Jin / Sush / Dataviz <p>
+</div>
+
+
+
+
+
+<div class="parallax">
+
+<div style="height:25vh;background:rgba(255,255,255,0.35);font-size:36px">
+
+  <div style="font-family: Arial, Helvetica, sans-serif;
+font-size: 16px;
+letter-spacing: 1.6px;
+word-spacing: 1.6px;
+color: rgba(0,0,0,0.4);
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+
+
+margin-left:0vw;
+text-align:center;">
+  <br><br><br><br>
+Hi there!<br><br><br> Are you familiar with automation? <br><br><br>
+not much? <br><br><br>
+
+How about this?
+
+
+</div>
+</div>
+</div>
+
+<div class="parallax2">
+
+  <div style="height:25vh;background:rgba(0,0,0,0.35);font-size:36px">
+
+    <div style="font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.6px;
+  word-spacing: 1.6px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+
+
+  margin-left:0vw;
+  text-align:center;">
+    <br><br><br>That's right! <br><br><br>
+
+    Smart speakers! <br><br><br>
+
+    In fact, recent statistics showed that these smart speakers are actually saving some of our times!
+    <br><br><br>
+    Besides these speakers, we are already saving a lot of time thanks to technology.
+
+
+  </div>
+  </div>
+  </div>
+
+
+<div class="parallax3">
+
+  <div style="height:20vh;background:rgba(255,255,255,0.45);">
+
+    <div style="font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.6px;
+  word-spacing: 1.6px;
+  color: rgba(0,0,0,0.6);
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+
+
+  margin-left:0vw;
+  text-align:center;">
+    <br><br><br>So we were curious...<br><br><br>
+
+    How much will we save our time by automation...?<br><br><br>
+
+    So we prepared two little surveys (You're welcome)
+
+
+  </div>
+  </div>
+
+</div>
+
+<div style="height:6vh; background:rgba(0,0,0,0.8);">
+  <div style="font-family: Arial, Helvetica, sans-serif;
+font-size: 20px;
+letter-spacing: 1.6px;
+word-spacing: 1.6px;
+color: rgba(255,255,255,0.6);
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+
+
+margin-left:0vw;
+text-align:center;">
+<br>
+Let's Start Round 1!
+
+</div>
+</div>
+
+
+
+<div class="parallax4">
+
+<div class="survey1", style="height:70vh;
+background-color:rgba(255,255,255,0.5);
+">
+
+<div class="survey1texts", style="font-family: Arial, Helvetica, sans-serif;
+color:rgba(0,0,0,0.6);
+font-size:16px;
+font-weight: 700;
+letter-spacing: 1.6px;
+word-spacing: 1.6px;
+position:relative;
+margin-left:20vw;
+margin-top:0%;
+margin-bottom:0%;">
+
+<br><br><br><br>
+<p style="font-family: Arial, Helvetica, sans-serif;
+color:rgba(0,0,0,0.6);
+font-size:22px;
+font-weight: 700;
+letter-spacing: 1.6px;
+word-spacing: 1.6px;">
+How much time do you spend on these activities?</p><br><br>
+
+
+
+Housework<br>
+<input type="range" min="0" max="240" value="0" class="slider" id="slider1">
+<div id="slider1time"><br></div>
+ <br>
+ <br>
+
+  Food preparation & Cleanup<br>
+  <input type="range" min="0" max="240" value="0" class="slider" id="slider2">
+  <div id="slider2time"><br></div>
+  <br>
+  <br>
+
+
+  Household management<br>
+  <input type="range" min="0" max="240" value="0" class="slider" id="slider3">
+  <div id="slider3time"><br></div>
+  <br>
+  <br>
+
+
+  Purchasing goods and services<br>
+  <input type="range" min="0" max="240" value="0" class="slider" id="slider4">
+  <div id="slider4time"><br></div>
+  <br>
+  <br>
+
+
+  Caring for and helping household members<br>
+  <input type="range" min="0" max="240" value="0" class="slider" id="slider5">
+  <div id="slider5time"><br></div>
+  <br>
+  <br>
+
+
+
+Telephone calls, mails, and e-mails<br>
+    <input type="range" min="0" max="240" value="0" class="slider" id="slider6">
+    <div id="slider6time"><br></div>
+
+
+    <br><br>
+    <div id="survey1_submit"> submit </div>
+
+    <br><br><br><br><br><br>
+  </div>
+
+  </div>
+
+
+<script type="text/javascript">
+
+var surveydatabefore=[[{axis:"Housework",value:0},
+{axis:"Food prep",value:0},
+{axis:"Household management",value:0},
+{axis:"Purchasing",value:0},
+{axis:"Caring household members",value:0},
+{axis:"Phonecalls, mails",value:0}]];
+///SLIDER 1
+  var slider1 = document.getElementById("slider1")//this is the slider element
+/*  var rateOfAutomation1 = .8//this is the percentage of time automation changes*/
+var s1m=0;
+var s1h=0;
+  slider1.oninput = function() {
+        s1m = Math.round(this.value);//this is the before value in minute
+      s1h = Math.round(s1m/60*100)/100;//in hours
+
+    /*  var slider1After = Math.round(slider1Before*rateOfAutomation1);//this is after multiplying by automation rate in minutes
+      var slider1AfterHours = Math.round(slider1After/60*100)/100;//in hours*/
+
+      d3.select("#slider1time").html(+s1m+"mins or "+s1h+" hrs");
+
+      //d3.select("#slider1_before").html("Before Automation: "+slider1Before+"minutes or "+slider1BeforeHours+" hours")//this displays the before value
+      //d3.select("#slider1_after").html("After Automation:"+slider1After+"minutes or "+slider1AfterHours+" hours")//this displays after
+
+    };
+
+
+///SLIDER 2
+  var slider2 = document.getElementById("slider2")//this is the slider element
+  var s2m=0;
+  var s2h=0;
+/*  var rateOfAutomation2 = .5//this is the percentage of time automation changes*/
+    /* var slider2Before=120;
+     var slider2BeforeHours=Math.round(slider2Before/60*100)/100;*/
+  /*   var slider2After=slider2Before*rateOfAutomation2;
+     var slider2AfterHours=Math.round(slider2After/60*100)/100;*/
+
+  slider2.oninput = function() {    //everything is still being calculated constantly, but does not display
+      s2m = Math.round(this.value);//this is the before value in minute
+      s2h = Math.round(s2m/60*100)/100//in hours
+        d3.select("#slider2time").html(+s2m+"mins or "+s2h+" hrs");
+
+  /*    slider2After = Math.round(slider2Before*rateOfAutomation2)//this is after multiplying by automation rate in minutes
+      slider2AfterHours = Math.round(slider2After/60*100)/100//in hours*/
+  }
+
+  ///SLIDER 3
+    var slider3 = document.getElementById("slider3")//this is the slider element
+    var s3m=0;
+    var s3h=0;
+
+    slider3.oninput = function() {    //everything is still being calculated constantly, but does not display
+        s3m = Math.round(this.value);//this is the before value in minute
+        s3h = Math.round(s3m/60*100)/100//in hours
+  d3.select("#slider3time").html(+s3m+"mins or "+s3h+" hrs");
+    /*    slider3After = Math.round(slider3Before*rateOfAutomation3)//this is after multiplying by automation rate in minutes
+        slider3AfterHours = Math.round(slider3After/60*100)/100//in hours*/
+    }
+
+  ///SLIDER 4
+    var slider4 = document.getElementById("slider4")//this is the slider element
+    var s4m=0;
+    var s4h=0;
+
+
+    slider4.oninput = function() {    //everything is still being calculated constantly, but does not display
+        s4m = Math.round(this.value);//this is the before value in minute
+        s4h = Math.round(s4m/60*100)/100//in hours
+          d3.select("#slider4time").html(+s4m+"mins or "+s4h+" hrs");
+
+    /*    slider4After = Math.round(slider4Before*rateOfAutomation4)//this is after multiplying by automation rate in minutes
+        slider4AfterHours = Math.round(slider4After/60*100)/100//in hours*/
+    }
+
+    ///SLIDER 5
+      var slider5 = document.getElementById("slider5")//this is the slider element
+      var s5m=0;
+      var s5h=0;
+
+
+
+      slider5.oninput = function() {    //everything is still being calculated constantly, but does not display
+          s5m = Math.round(this.value);//this is the before value in minute
+          s5h = Math.round(s5m/60*100)/100//in hours
+            d3.select("#slider5time").html(+s5m+"mins or "+s5h+" hrs");
+
+        /*  slider4After = Math.round(slider4Before*rateOfAutomation4)//this is after multiplying by automation rate in minutes
+          slider4AfterHours = Math.round(slider4After/60*100)/100//in hours*/
+      }
+
+      ///SLIDER 6
+        var slider6 = document.getElementById("slider6")//this is the slider element
+        var s6m=0;
+        var s6h=0;
+
+
+
+        slider6.oninput = function() {    //everything is still being calculated constantly, but does not display
+            s6m = Math.round(this.value);//this is the before value in minute
+            s6h = Math.round(s6m/60*100)/100//in hours
+              d3.select("#slider6time").html(+s6m+"mins or "+s6h+" hrs");
+
+        /*    slider4After = Math.round(slider4Before*rateOfAutomation4)//this is after multiplying by automation rate in minutes
+            slider4AfterHours = Math.round(slider4After/60*100)/100//in hours*/
+        }
+
+
+
+
+  d3.select("#survey1_submit")
+  .on("click",function(){
+    surveydatabefore = [];
+    surveydatabefore.push([{axis:"Housework",value:s1h},
+    {axis:"Food prep",value:s2h},
+    {axis:"Household management",value:s3h},
+    {axis:"Purchasing",value:s4h},
+    {axis:"Caring household members",value:s5h},
+    {axis:"Phonecalls, mails",value:s6h}]);
+        })
+
+  </script>
+
+
+
+  <div style="height:6vh; background:rgba(0,0,0,0.8);">
+    <div style="font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  letter-spacing: 1.6px;
+  word-spacing: 1.6px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+
+
+  margin-left:0vw;
+  text-align:center;">
+  <br>
+ Round 2!
+
+  </div>
+  </div>
+
+
+  <div class="parallax5">
+
+    <div class="survey2", style="height:70vh;
+    /*background-color:rgba(255,255,255,0.5);
+    ">
+
+  <div class="survey2texts", style="font-family: Arial, Helvetica, sans-serif;
+  color:rgba(0,0,0,0.6);
+  font-size:16px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-spacing: 1.6px;
+  position:relative;
+  margin-left:20vw;
+  margin-top:0%;
+  margin-bottom:10%;">
+
+  <br><br><br><br>
+  <p style="font-family: Arial, Helvetica, sans-serif;
+  color:rgba(0,0,0,0.6);
+  font-size:22px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-spacing: 1.6px;">
+
+In 30 years, to what extent do you think these activities will be automated?</p><br><br>
+
+  Housework<br>
+  <input type="range" min="0" max="100" value="0" class="slider" id="slider1r">
+  <div id="slider1rate"><br></div>
+   <br>
+   <br>
+
+    Food preparation & Cleanup<br>
+    <input type="range" min="0" max="100" value="0" class="slider" id="slider2r">
+    <div id="slider2rate"><br></div>
+    <br>
+    <br>
+
+
+    Household management<br>
+    <input type="range" min="0" max="100" value="0" class="slider" id="slider3r">
+    <div id="slider3rate"><br></div>
+    <br>
+    <br>
+
+
+    Purchasing goods and services<br>
+    <input type="range" min="0" max="100" value="0" class="slider" id="slider4r">
+    <div id="slider4rate"><br></div>
+    <br>
+    <br>
+
+
+    Caring for and helping household members<br>
+    <input type="range" min="0" max="100" value="0" class="slider" id="slider5r">
+    <div id="slider5rate"><br></div>
+    <br>
+    <br>
+
+
+
+  Telephone calls, mails, and e-mails<br>
+      <input type="range" min="0" max="100" value="0" class="slider" id="slider6r">
+      <div id="slider6rate"><br></div>
+
+
+      <br><br>
+      <div id="survey2_submit"> submit </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+var surveydataafter=[[{axis:"Housework",value:0},
+{axis:"Food prep",value:0},
+{axis:"Household management",value:0},
+{axis:"Purchasing",value:0},
+{axis:"Caring household members",value:0},
+{axis:"Phonecalls, mails",value:0}]];
+///SLIDER 1
+  var slider1 = document.getElementById("slider1r")//this is the slider element
+/*  var rateOfAutomation1 = .8//this is the percentage of time automation changes*/
+var s1r=0;
+var s11=0;
+var s11r=0;
+  slider1.oninput = function() {
+        s1r = Math.round(this.value);//this is the before value in minute
+        s11=s1h*(1-(s1r/100));
+        s11r=s11.toFixed(2);
+
+
+    /*  var slider1After = Math.round(slider1Before*rateOfAutomation1);//this is after multiplying by automation rate in minutes
+      var slider1AfterHours = Math.round(slider1After/60*100)/100;//in hours*/
+
+      d3.select("#slider1rate").html(+s1r+"%");
+
+      //d3.select("#slider1_before").html("Before Automation: "+slider1Before+"minutes or "+slider1BeforeHours+" hours")//this displays the before value
+      //d3.select("#slider1_after").html("After Automation:"+slider1After+"minutes or "+slider1AfterHours+" hours")//this displays after
+
+    };
+
+
+///SLIDER 2
+  var slider2 = document.getElementById("slider2r")//this is the slider element
+  var s2r=0;
+  var s22=0;
+  var s22r=0;
+/*  var rateOfAutomation2 = .5//this is the percentage of time automation changes*/
+    /* var slider2Before=120;
+     var slider2BeforeHours=Math.round(slider2Before/60*100)/100;*/
+  /*   var slider2After=slider2Before*rateOfAutomation2;
+     var slider2AfterHours=Math.round(slider2After/60*100)/100;*/
+
+  slider2.oninput = function() {    //everything is still being calculated constantly, but does not display
+      s2r = Math.round(this.value);//this is the before value in minute
+      s22=s2h*(1-(s2r/100));
+      s22r=s22.toFixed(2);
+
+        d3.select("#slider2rate").html(+s2r+"%");
+
+  /*    slider2After = Math.round(slider2Before*rateOfAutomation2)//this is after multiplying by automation rate in minutes
+      slider2AfterHours = Math.round(slider2After/60*100)/100//in hours*/
+  }
+
+  ///SLIDER 3
+    var slider3 = document.getElementById("slider3r")//this is the slider element
+    var s3r=0;
+    var s33=0;
+    var s33r=0;
+
+
+    slider3.oninput = function() {    //everything is still being calculated constantly, but does not display
+        s3r = Math.round(this.value);//this is the before value in minute
+        s33=s3h*(1-(s3r/100));
+        s33r=s33.toFixed(2);
+
+  d3.select("#slider3rate").html(+s3r+"%");
+    /*    slider3After = Math.round(slider3Before*rateOfAutomation3)//this is after multiplying by automation rate in minutes
+        slider3AfterHours = Math.round(slider3After/60*100)/100//in hours*/
+    }
+
+  ///SLIDER 4
+    var slider4 = document.getElementById("slider4r")//this is the slider element
+    var s4r=0;
+    var s44=0;
+    var s44r=0;
+
+
+
+    slider4.oninput = function() {    //everything is still being calculated constantly, but does not display
+        s4r = Math.round(this.value);//this is the before value in minute
+        s44=s4h*(1-(s4r/100));
+        s44r=s44.toFixed(2);
+
+          d3.select("#slider4rate").html(+s4r+"%");
+
+    /*    slider4After = Math.round(slider4Before*rateOfAutomation4)//this is after multiplying by automation rate in minutes
+        slider4AfterHours = Math.round(slider4After/60*100)/100//in hours*/
+    }
+
+    ///SLIDER 5
+      var slider5 = document.getElementById("slider5r")//this is the slider element
+      var s5r=0;
+      var s55=0;
+      var s55r=0;
+
+
+
+
+      slider5.oninput = function() {    //everything is still being calculated constantly, but does not display
+          s5r = Math.round(this.value);//this is the before value in minute
+          s55=s5h*(1-(s5r/100));
+          s55r=s55.toFixed(2);
+
+            d3.select("#slider5rate").html(+s5r+"%");
+
+        /*  slider4After = Math.round(slider4Before*rateOfAutomation4)//this is after multiplying by automation rate in minutes
+          slider4AfterHours = Math.round(slider4After/60*100)/100//in hours*/
+      }
+
+      ///SLIDER 6
+        var slider6 = document.getElementById("slider6r")//this is the slider element
+        var s6r=0;
+        var s66=0;
+        var s66r=0;
+
+
+        slider6.oninput = function() {    //everything is still being calculated constantly, but does not display
+            s6r = Math.round(this.value);//this is the before value in minute
+            s66=s6h*(1-(s6r/100));
+            s66r=s66.toFixed(2);
+
+              d3.select("#slider6rate").html(+s6r+"%");
+
+        /*    slider4After = Math.round(slider4Before*rateOfAutomation4)//this is after multiplying by automation rate in minutes
+            slider4AfterHours = Math.round(slider4After/60*100)/100//in hours*/
+        }
+
+
+
+
+
+
+  d3.select("#survey2_submit")
+  .on("click",function(){
+
+    surveydataafter = [];
+      surveydataafter.push([{axis:"Housework",value:s11.toFixed(2)},
+    {axis:"Food prep",value:s22.toFixed(2)},
+    {axis:"Household management",value:s33.toFixed(2)},
+    {axis:"Purchasing",value:s44.toFixed(2)},
+    {axis:"Caring household members",value:s55.toFixed(2)},
+    {axis:"Phonecalls, mails",value:s66.toFixed(2)}]);
+  });
+
+  </script>
+
+  <div style="height:9vh; background:rgba(0,0,0,0.8);">
+    <div style="font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  letter-spacing: 1.6px;
+  word-spacing: 1.6px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+
+
+  margin-left:0vw;
+  text-align:center;">
+  <br>
+  Ready to see the results? click the button below to calculate chart
+<br>
+  <div id="result" style="margin-left:46vw;margin-top:2vh;"> see the result </div>
+  </div>
+  </div>
+
+
+<script type="text/javascript">
+var data2=[];
+var cal=0;
+
+d3.select("#result")
+.on("click",function(){
+cal = s1h+s2h+s3h+s4h+s5h+s6h -s11r-s22r-s33r-s44r-s55r-s66r;
+ var data2 =surveydatabefore.concat(surveydataafter);
+
+ RadarChart(".radarChart1", data1, radarChartOptions);
+ RadarChart(".radarChart2", data2, radarChartOptions);
+
+ d3.select("#announcement").html("It seems like in your future, you will save "+cal.toFixed(2)+" hours!");
+
+
+
+});
+
+
+
+
+</script>
+
+
+
+
+  <div style="height:70vh;
+  background-color:white;
+  position:relative;
+  margin-left:0%;
+  margin-top:10%;
+  margin-bottom:10%;"; id="radar">
+  <div id="announcement" style="font-family: Arial, Helvetica, sans-serif;
+    color:rgba(0,0,0,0.6);
+    text-align: center;
+    font-size:25px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    word-spacing: 1.6px;">
+    <br><br>
+
+  </div>
+  <br><br><br><br><br><br><br><br><br>
+  		<div class="radarChart1" style="position:absolute; left:20vw;">
+
+<p id="text1" style="font-family: Arial, Helvetica, sans-serif;
+  color:rgba(0,0,0,0.6);
+  text-align: center;
+  font-size:15px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  word-spacing: 1.6px;">This chart shows the time spendings of Average Americans </p>
+
+      </div>
+  		<div class="radarChart2" style="position:absolute; left:54vw;">
+        <p id="text2" style="font-family: Arial, Helvetica, sans-serif;
+          color:rgba(0,0,0,0.6);
+          text-align: center;
+          font-size:15px;
+          font-weight: 700;
+          letter-spacing: 1.6px;
+          word-spacing: 1.6px;"> This chart shows your current time spendings, and your future </p>
+
+              </div>
+
+
+      </div>
+
+
+  		<script src="radarChart.js"></script>
+  		<script>
+
+        /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+
+  			//////////////////////////////////////////////////////////////
+  			//////////////////////// Set-Up //////////////////////////////
+  			//////////////////////////////////////////////////////////////
+
+  			var margin = {top: 100, right: 100, bottom: 100, left: 100},
+  				width = 400
+          height = 400
+
+  			//////////////////////////////////////////////////////////////
+  			////////////////////////// Data //////////////////////////////
+  			//////////////////////////////////////////////////////////////
+
+  			var data1 = [
+  					  [//average americans
+  						{axis:"Housework",value:1.63},
+  						{axis:"Food prep",value:0.55},
+  						{axis:"Household management",value:0.13},
+  						{axis:"Purchasing",value:0.67},
+              {axis:"Caring household members",value:0.53},
+              {axis:"Phonecalls, mails",value:0.15}
+            ]
+  					];
+
+
+  			//////////////////////////////////////////////////////////////
+  			//////////////////// Draw the Chart //////////////////////////
+  			//////////////////////////////////////////////////////////////
+
+  			var color = d3.scaleOrdinal()
+  				.range(["#EDC951","#CC333F","#00A0B0"]);
+
+  			var radarChartOptions = {
+  			  w: width,
+  			  h: height,
+  			  margin: margin,
+  			  maxValue: 0.5,
+  			  levels: 5,
+  			  roundStrokes: false,
+  			  color: color,
+          dotRadius : 7.5
+  			};
+  			//Call function to draw the Radar chart
+  		/*	RadarChart(".radarChart1", data1, radarChartOptions);
+  			RadarChart(".radarChart2", surveydatabefore, radarChartOptions);*/
+  		</script>
+</script>
+
+
+</div>
+
+</body>
+</html>
